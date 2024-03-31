@@ -1,0 +1,75 @@
+body {
+    background-image: url('https://encurtador.com.br/biJVW');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: repeat-x; 
+    font-family: 'Noto Serif';
+    background-color: #FFD7A9;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: #ffd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  width: 50%; /* Ajuste a largura conforme necessário */
+  max-width: 800px; /* Ajuste a largura máxima conforme necessário */
+  overflow: hidden;
+}
+
+.cadastro,
+.login {
+  padding: 20px;
+  flex: 1;
+}
+
+.cadastro {
+  border-right: 2px solid #eee; /* Adiciona uma linha divisória entre os formulários */
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none; /* Remove o contorno azul no foco */
+}
+
+button {
+  padding: 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Adiciona um efeito suave ao passar o mouse */
+}
+
+button:hover {
+  background-color: #e31e10;
+}
