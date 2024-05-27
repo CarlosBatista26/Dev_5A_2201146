@@ -1,0 +1,49 @@
+<div class="cadastro">
+    <h1>Criar Conta</h1>
+    <form id="signup-form" action="cadastro_user.php" method="post">
+      <input type="text" id="full-name" name="nome" placeholder="Nome Completo" required>
+      <input type="tel" id="phone" name="telefone" placeholder="Telefone">
+      <input type="email" id="email" name="email" placeholder="E-mail" required>
+      <div class="input-group">
+        <input type="password" id="password" name="senha" placeholder="Senha" required>
+        <button type="button" onclick="togglePasswordVisibility('password', this)">
+          <i class="bi bi-eye-slash"></i>
+        </button>
+      </div>
+      <button type="submit">Cadastrar</button>
+    </form>
+  </div>
+
+
+
+<div id="login">
+
+    <div class="Login">
+
+        <h1>Login</h1>
+        <form id="formLogin" action="login.php" method="POST">
+
+        <div class="email">
+            <input type="email" name="email" placeholder="E-mail" required>
+        </div>
+
+        <div class="senha">
+            <input type="password" name="senha" id="senhaLogin" placeholder="Senha" required>
+        </div>
+
+        <div class="entrar">
+            <p>Ainda não tem uma conta? Crie uma.</p>
+            <button type="submit">Entrar</button>
+        </div>
+
+    </div>
+
+</div>  
+
+
+
+
+IMAGEM
+<div class="form-image">
+    <img src="asset/img/undraw_shopping_app_flsj.svg" alt="">
+  </div>

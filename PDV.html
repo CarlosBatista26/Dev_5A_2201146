@@ -1,27 +1,179 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ponto de Venda</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>LocalMarketing</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        /* Estilo para o menu de navegação no topo */
+        .top-nav {
+            width: 100%;
+            background-color: #1e1c2e;
+            color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            position: fixed;
+
+        }
+
+        .top-nav input[type="search"] {
+            border-radius: 15px;
+            border: none;
+            width: 400px;
+            height: 25px;
+            padding-left: 15px;
+            margin-left: 700px;
+            background-color: #1e1c2e;
+            color: #b6b6b6;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .sair {
+            cursor: pointer;
+            width: 120px;
+            height: 25px;
+            border-radius: 20px; 
+            border: none;
+            background-color: #1DB954;
+            color: #141414;
+        }
+
+        .end_pedido {
+            cursor: pointer;
+            width: 400px;
+            height: 40px;
+            border-radius: 20px;
+            border: none;
+            background-color: #1DB954;
+            color: #141414;
+            margin-top: 295px; /* Posição */
+            align-items: center;
+            
+        }
+
+        /* Estilo para o menu lateral */
+        .sidebar {
+            width: 400px;
+            background-color: #1e1c2e;
+            color: #fff;
+            padding: 10px;
+            margin-top: 40px; /* Ajusta a margem para evitar a sobreposição com a barra de navegação */
+            height: calc(100vh - 50px); /* Ajusta a altura para evitar a sobreposição com a barra de navegação */
+            position: fixed; /* Torna o menu lateral fixo */
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .sidebar ul li:hover {
+            background-color: #ddd;
+        }
+
+        /* Estilo para a lista de itens adicionados */
+        .main-content {
+            padding: 10px;
+            margin-left: 300px; /* Ajusta a margem para evitar a sobreposição com o menu lateral */
+            margin-top: 60px; /* Ajusta a margem para evitar a sobreposição com a barra de navegação */
+            flex-grow: 1;
+        }
+
+        .main-content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .main-content ul li {
+            padding: 10px;
+            background-color: #eee;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main-content ul li button {
+            padding: 5px 10px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .main-content ul li button:hover {
+            background-color: #ff1a1a;
+        }
+    </style>
 </head>
 <body>
-<div class="container_pdv">
-    <h1>Ponto de Venda</h1>
-    <div class="vendas">
-        <form id="formVendas" action="processar_vendas.php" method="post">
-            <input type="number" name="código" placeholder="Código" required>
-            <input type="text" name="produto" placeholder="Nome do Produto" required>
-            <input type="number" name="quantidade" placeholder="Quantidade" required>
-            <button type="submit">Registrar Venda</button>
-        </form>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 125 25" width="125" height="25">
+        <path fill="#1e1c2e" d="M114.31 12.47a9.58 9.58 0 1 0-14.2 7.33 10.21 10.21 0 0 0 14.2-7.33z"/>
+        <path fill="#1DB954" d="M114.31 12.47a9.58 9.58 0 1 1-14.2-7.33 10.21 10.21 0 0 1 14.2 7.33z"/>
+    </svg>
+
+    <!-- Menu de navegação no topo -->
+    <div class="top-nav">
+        <div class="form-logo">
+            <img src="asset/img/Sem título.png" alt="">
+        </div>
+        <input type="search" placeholder="Pesquisar Pedido">
+        <button class="sair" onclick="window.location.href='index.html';">Sair</button>
     </div>
-    <!-- Botão Sair -->
-    <button onclick="window.location.href='index.html';" style="margin-top: 20px;">Sair</button>
-</div>
-<script src="script.js"></script>
+
+    <!-- Menu lateral -->
+    <div class="sidebar">
+        <br>
+        <h3>Serviços</h3>
+        <ul id="item-list">
+            <li onclick="addItem('Preço $0 - Duração 80 horas - Treinamento em Ciências da Computação (Treinamento Alan Turing)')">Treinamento Alan Turing</li>
+            <li onclick="addItem('Preço $0 - Duração 80 horas - Treinamento em Eng.Básica (Treinamento Mary Jackson)')">Treinamento Mary Jackson</li>
+            <li onclick="addItem('Preço $0 - Duração 80 horas - Treinamento em Lógica de Programação (Treinamento Margaret Hamilton)')">Treinamento Margaret Hamilton</li>
+            <li onclick="addItem('Preço $0 - Duração 80 horas - Treinamento em Cálculos (Treinamento Katherine Johnson)')">Treinamento Katherine Johnson</li>
+        </ul>
+        <button class="end_pedido" >Finalizar pedido</button>
+    </div>
+
+    <!-- Lista de itens adicionados -->
+    <div class="main-content">
+        <h3>Itens Adicionados</h3>
+        <ul id="added-items">
+        </ul>
+    </div>
+
+
+
+    <script>
+        function addItem(item) {
+            const ul = document.getElementById('added-items');
+            const li = document.createElement('li');
+            li.textContent = item;
+
+            const button = document.createElement('button');
+            button.textContent = 'Excluir';
+            button.onclick = function() {
+                ul.removeChild(li);
+            };
+
+            li.appendChild(button);
+            ul.appendChild(li);
+        }
+    </script>
 </body>
 </html>

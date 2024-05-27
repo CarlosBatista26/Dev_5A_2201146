@@ -3,16 +3,20 @@
 
     $nome = $_POST['nome'];
     $email = $_POST['email'];
-    $telefone = $_POST['telefone'];
-    $senha = md5($_POST['senha']);
+    $senha = md5($_POST['senha']);  
 
-    $sql="INSERT INTO users (nome, email, telefone, senha) VALUES ('$nome', '$email', '$telefone', '$senha')";
+       $stmt = $conexao->prepare("INSERT INTO users (nome, email, senha) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $nome, $email, $senha);
 
-    if(mysqli_query($conexao, $sql)){
-        echo ("Usuário cadastrado com sucesso");
+    if($stmt->execute()){
+        echo "Usuário cadastrado com sucesso";
+        header("Location: index.html");
+        exit();  
     } 
     else{ 
-        echo ("Error: ".$sql."<br>".mysqli_error($conexao));
+        echo "Error: " . $stmt->error;
     }
-    mysqli_close($conexao);
+
+    $stmt->close();
+    $conexao->close();
 ?>
