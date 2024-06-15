@@ -21,7 +21,6 @@
             display: flex;
             align-items: center;
             position: fixed;
-
         }
 
         .top-nav input[type="search"] {
@@ -57,7 +56,6 @@
             color: #141414;
             margin-top: 295px; /* Posição */
             align-items: center;
-            
         }
 
         /* Estilo para o menu lateral */
@@ -119,6 +117,29 @@
         .main-content ul li button:hover {
             background-color: #ff1a1a;
         }
+
+    /* Estilo para a tela opaca */
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .overlay iframe {
+        width: 90%;
+        max-width: 900px;
+        height: 90%;
+        max-height: 500px;
+        border: none;
+    }
+
     </style>
 </head>
 <body>
@@ -147,7 +168,7 @@
             <li onclick="addItem('Preço $0 - Duração 80 horas - Treinamento em Lógica de Programação (Treinamento Margaret Hamilton)')">Treinamento Margaret Hamilton</li>
             <li onclick="addItem('Preço $0 - Duração 80 horas - Treinamento em Cálculos (Treinamento Katherine Johnson)')">Treinamento Katherine Johnson</li>
         </ul>
-        <button class="end_pedido" >Finalizar pedido</button>
+        <button class="end_pedido" onclick="showVideo()">Finalizar pedido</button>
     </div>
 
     <!-- Lista de itens adicionados -->
@@ -158,6 +179,10 @@
     </div>
 
 
+    <!-- Tela opaca com vídeo -->
+    <div class="overlay" id="overlay">
+        <iframe src="https://www.youtube.com/embed/E0YX8BC4RLo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; muted" allowfullscreen></iframe>
+    </div>
 
     <script>
         function addItem(item) {
@@ -173,6 +198,10 @@
 
             li.appendChild(button);
             ul.appendChild(li);
+        }
+
+        function showVideo() {
+            document.getElementById('overlay').style.display = 'flex';
         }
     </script>
 </body>
